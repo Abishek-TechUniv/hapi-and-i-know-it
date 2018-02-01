@@ -1,12 +1,16 @@
 const Hapi = require('hapi');
 
-// const server = new Hapi.Server({
-//   host: 'localhost',
-//   port: Number(process.argv[2] || 8080),
-// });
+const server = new Hapi.Server();
 
-// server.route({ path: '/', method: 'GET', handler: sayHello });
+server.connection({
+  host: 'localhost',
+  port: 8080,
+});
 
-const sayHello = () => 'Hello hapi';
+const sayHello = (request, reply) => reply('Hello hapi');
 
-module.exports = { sayHello };
+server.route({ path: '/', method: 'GET', handler: sayHello });
+
+// server.start();
+
+module.exports = { sayHello, server };
