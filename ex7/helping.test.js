@@ -7,12 +7,14 @@ const html =
     <body>
         Hello Helping!
     </body>
-</html>`;
+</html>
+`;
 
-test('should send a succes response code', () => {
-  supertest(server.listener).get('/?name=Helping&suffix=1')
-    .then((repsonse) => {
-      expect(repsonse.code).toBe(200);
+test('server should return the succes code', (done) => {
+  supertest(server.listener).get('/?name=Helping&suffix=!')
+    .then((response) => {
+      expect(response.status).toBe(200);
+      done();
     });
 });
 
