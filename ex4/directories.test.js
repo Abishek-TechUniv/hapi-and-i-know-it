@@ -1,16 +1,17 @@
 const supertest = require('supertest');
-const server = require('./handling');
+const server = require('./directories');
 
 const html =
 `<html>
-    <head><title>Hello Handling</title></head>
+    <head><title>Hello Directories</title></head>
     <body>
-        Hello Handling
+        Hello Directories
     </body>
-</html>`;
+</html>
+`;
 
 test('server should return the text', (done) => {
-  supertest(server.listener).get('/')
+  supertest(server.listener).get('/foo/bar/baz/file.html')
     .then((response) => {
       expect(response.text).toMatch(html);
       done();
