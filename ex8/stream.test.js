@@ -16,3 +16,11 @@ test('server should return the success code', (done) => {
       done();
     });
 });
+
+test('server should return the text', (done) => {
+  supertest(server.listener).get('/')
+    .then((response) => {
+      expect(response.text).toMatch('Gur Chefhvg bs Uncv-arff');
+      done();
+    });
+});

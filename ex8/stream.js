@@ -17,6 +17,6 @@ const cipher = (request, reply) => {
 
 server.route({ path: '/', method: 'GET', handler: cipher });
 
-server.start();
+// server.start();
 
 module.exports = { cipher, server };
