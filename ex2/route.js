@@ -15,6 +15,6 @@ server.route({
   handler: (request, repsonse) => repsonse(prefix(request.params.name)),
 });
 
-// server.start();
+server.start();
 
 module.exports = { prefix, server };
