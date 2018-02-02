@@ -9,3 +9,9 @@ test('server should return the success code', (done) => {
     });
 });
 
+test('should return the correct text if validated', () => {
+  supertest(server.listener).get('/chickens/cake')
+    .then((response) => {
+      expect(response.text).toMatch('You asked for : cake');
+    });
+});
