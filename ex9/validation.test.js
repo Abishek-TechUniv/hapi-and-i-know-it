@@ -15,3 +15,10 @@ test('should return the correct text if validated', () => {
       expect(response.text).toMatch('You asked for : cake');
     });
 });
+
+test('should return error if not validated', () => {
+  supertest(server.listener).get('/chickens/')
+    .then((response) => {
+      expect(response.status).toBe(404);
+    });
+});

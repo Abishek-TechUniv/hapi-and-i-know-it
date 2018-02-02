@@ -14,7 +14,13 @@ server.route({
   handler: (request, reply) => {
     reply(`You asked for : ${request.params.breed}`);
   },
-
+  config: {
+    validate: {
+      params: {
+        breed: Joi.string().required(),
+      },
+    },
+  },
 });
 
 if (!module.parent) {
