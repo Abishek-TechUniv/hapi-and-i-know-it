@@ -11,5 +11,14 @@ describe('Posting to login URL', () => {
         done();
       });
   });
-});
 
+  it('should return failure if invalid (no isLogin) data given', (done) => {
+    supertest(server.listener)
+      .post('/login')
+      .send({ username: 'Abishek', accessToken: 'abc123' })
+      .then((response) => {
+        expect(response.status).toBe(400);
+        done();
+      });
+  });
+});
